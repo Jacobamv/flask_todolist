@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To do list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/lux/bootstrap.min.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">To do List</a>
+</nav>
+<br>
+<h1 style="text-align: center;">Broskev's Todolist</h1>
+<br>
+    <form class="form-inline my-2 my-lg-0" action="/add" method="post">
+    <input class="form-control mr-sm-2" type="text" name='name' placeholder="Добавить">
+    <button class="btn btn-success my-2 my-sm-0" type="submit">Добавить задачу</button>
+</form>
+<br>
+
+
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Задача</th>
+      <th scope="col">Выполнено ли</th>
+      <th scope="col">Удаление</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for task in tasks%}
+    <tr>
+      <th scope="row">{{task.id}}</th>
+      <td>{{task.name}}</td>
+      <td><a href="{{ url_for('change', id = task.id) }}">
+        {% if task.iscomplete %}
+        <button type="button" class="btn btn-success">Выполнено</button>
+        {% else %}
+        <button type="button" class="btn btn-warning">Еще не выполнил</button>
+        {% endif %}
+        </a>
+      </td>
+      <td><a href="{{ url_for('delete', id=task.id) }}"><button type="button" class="btn btn-danger">Удалить задачку</button></a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table> 
+<!--<button type="button" class="btn btn-warning">Еще не выполнил</button>-->
+
+
+
+
+
+
+
+
+</body>
+</html>
