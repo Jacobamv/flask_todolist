@@ -1,5 +1,5 @@
 import sys
-path = '/home/jacobamv/todolist'
+path = '/home/jacobamv/flask_todolist'
 if path not in sys.path:
    sys.path.insert(0, path)
 
